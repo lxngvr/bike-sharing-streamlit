@@ -3,4 +3,3 @@ pandas<2.0.0
 seaborn
 streamlit
 altair<5
-pyarrow
