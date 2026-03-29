@@ -84,7 +84,7 @@ elif menu == "RFM Analysis":
         'Frequency_Avg_Daily': [day_df['casual'].mean(), day_df['registered'].mean()],
         'Monetary_Total_Volume': [day_df['casual'].sum(), day_df['registered'].sum()]
     }
-        rfm_df = pd.DataFrame(rfm_data)
+    rfm_df = pd.DataFrame(rfm_data)
         # Fix Arrow serialization
         rfm_df = rfm_df.astype({
             'User_Type': 'str',
