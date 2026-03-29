@@ -85,7 +85,6 @@ elif menu == "RFM Analysis":
         'Monetary_Total_Volume': [day_df['casual'].sum(), day_df['registered'].sum()]
     }
     rfm_df = pd.DataFrame(rfm_data)
-    rfm_df['User_Type'] = rfm_df['User_Type'].astype(str)
     
     st.dataframe(rfm_df, use_container_width=True)
     
@@ -119,7 +118,6 @@ elif menu == "Clustering Analysis":
     day_df['Demand_Level'] = pd.qcut(day_df['cnt'], q=3, labels=['Low Demand', 'Medium Demand', 'High Demand'])
     demand_counts = day_df['Demand_Level'].value_counts().reindex(['Low Demand', 'Medium Demand', 'High Demand']).reset_index()
     demand_counts.columns = ['Demand_Level', 'Jumlah_Hari']
-    demand_counts['Demand_Level'] = demand_counts['Demand_Level'].astype(str)
     
     # 2. Manual Grouping
     def categorize_time(hr):
