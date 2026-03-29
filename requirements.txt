@@ -2,3 +2,4 @@ matplotlib
 pandas
 seaborn
 streamlit
+altair<5
