@@ -84,9 +84,15 @@ elif menu == "RFM Analysis":
         'Frequency_Avg_Daily': [day_df['casual'].mean(), day_df['registered'].mean()],
         'Monetary_Total_Volume': [day_df['casual'].sum(), day_df['registered'].sum()]
     }
-    rfm_df = pd.DataFrame(rfm_data)
-    rfm_df['User_Type'] = rfm_df['User_Type'].astype('str')  # fix LargeUtf8
-    st.table(rfm_df)
+        rfm_df = pd.DataFrame(rfm_data)
+        # Fix Arrow serialization
+        rfm_df = rfm_df.astype({
+            'User_Type': 'str',
+            'Recency_Days_Ago': 'int64',
+            'Frequency_Avg_Daily': 'float64',
+            'Monetary_Total_Volume': 'int64'
+        })
+        st.table(rfm_df)
     
     st.subheader("Visualisasi Metrik RFM")
     fig, axes = plt.subplots(1, 3, figsize=(18, 6))
