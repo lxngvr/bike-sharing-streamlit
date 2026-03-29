@@ -85,7 +85,8 @@ elif menu == "RFM Analysis":
         'Monetary_Total_Volume': [day_df['casual'].sum(), day_df['registered'].sum()]
     }
     rfm_df = pd.DataFrame(rfm_data)
-    st.dataframe(rfm_df, use_container_width=True)
+    rfm_df['User_Type'] = rfm_df['User_Type'].astype('str')  # fix LargeUtf8
+    st.table(rfm_df)
     
     st.subheader("Visualisasi Metrik RFM")
     fig, axes = plt.subplots(1, 3, figsize=(18, 6))
