@@ -1,2 +1,3 @@
 # bike-sharing
-Aplikasi ini merupakanDashboard interaktif untuk menganalisis data penyewaan sepeda (Capital Bikeshare) dengan menerapkan metode RFM Analysis dan Clustering. Dikembangkan menggunakan Python dan Streamlit
+# Tentang Aplikasi
+Aplikasi ini merupakan **Dashboard interaktif** untuk menganalisis data penyewaan sepeda (Capital Bikeshare) dengan menerapkan metode RFM Analysis dan Clustering. Dikembangkan menggunakan Python dan Streamlit
