@@ -85,7 +85,7 @@ elif menu == "RFM Analysis":
         'Monetary_Total_Volume': [day_df['casual'].sum(), day_df['registered'].sum()]
     }
     rfm_df = pd.DataFrame(rfm_data)
-    st.dataframe(rfm_df)
+    st.dataframe(rfm_df, use_container_width=True)
     
     st.subheader("Visualisasi Metrik RFM")
     fig, axes = plt.subplots(1, 3, figsize=(18, 6))
@@ -137,10 +137,10 @@ elif menu == "Clustering Analysis":
     col1, col2 = st.columns(2)
     with col1:
         st.markdown("**1. Hasil Binning (Tingkat Permintaan)**")
-        st.dataframe(demand_counts)
+        st.dataframe(demand_counts, use_container_width=True)
     with col2:
         st.markdown("**2. Hasil Manual Grouping (Jam Operasional)**")
-        st.dataframe(time_group_avg)
+        st.dataframe(time_group_avg, use_container_width=True)
     
     fig, axes = plt.subplots(1, 2, figsize=(16, 6))
     
