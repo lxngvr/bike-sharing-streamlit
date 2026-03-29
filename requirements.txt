@@ -1,5 +1,5 @@
 matplotlib
-pandas<2.0.0
+pandas
 seaborn
 streamlit
 altair<5
