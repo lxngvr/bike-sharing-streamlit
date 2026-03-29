@@ -3,3 +3,4 @@ pandas
 seaborn
 streamlit
 altair<5
+pyarrow
