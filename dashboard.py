@@ -32,7 +32,6 @@ st.sidebar.title("Dashboard")
 if 'halaman' not in st.session_state:
     st.session_state['halaman'] = "Overview"
 
-
 if st.sidebar.button("Overview", use_container_width=True):
     st.session_state['halaman'] = "Overview"
 
@@ -85,16 +84,9 @@ elif menu == "RFM Analysis":
         'Monetary_Total_Volume': [day_df['casual'].sum(), day_df['registered'].sum()]
     }
     rfm_df = pd.DataFrame(rfm_data)
-
-    # FIX: konversi tipe kolom agar kompatibel dengan Arrow serializer Streamlit
-    rfm_df = rfm_df.astype({
-        'User_Type': 'str',
-        'Recency_Days_Ago': 'int64',
-        'Frequency_Avg_Daily': 'float64',
-        'Monetary_Total_Volume': 'int64'
-    })
     
-    st.table(rfm_df)
+    # FIX: gunakan st.dataframe() agar tidak bergantung pada pyarrow
+    st.dataframe(rfm_df, use_container_width=True, hide_index=True)
     
     st.subheader("Visualisasi Metrik RFM")
     fig, axes = plt.subplots(1, 3, figsize=(18, 6))
@@ -126,8 +118,6 @@ elif menu == "Clustering Analysis":
     day_df['Demand_Level'] = pd.qcut(day_df['cnt'], q=3, labels=['Low Demand', 'Medium Demand', 'High Demand'])
     demand_counts = day_df['Demand_Level'].value_counts().reindex(['Low Demand', 'Medium Demand', 'High Demand']).reset_index()
     demand_counts.columns = ['Demand_Level', 'Jumlah_Hari']
-
-    # FIX: konversi tipe kolom agar kompatibel dengan Arrow serializer Streamlit
     demand_counts['Demand_Level'] = demand_counts['Demand_Level'].astype('str')
     demand_counts['Jumlah_Hari'] = demand_counts['Jumlah_Hari'].astype('int64')
     
@@ -143,21 +133,20 @@ elif menu == "Clustering Analysis":
         'Morning Rush (06-09)', 'Mid-Day (10-15)', 'Evening Rush (16-19)', 'Night/Early (20-05)'
     ]).reset_index()
     time_group_avg.columns = ['Kategori_Waktu', 'Rata_rata_Sewa']
-
-    # FIX: konversi tipe kolom agar kompatibel dengan Arrow serializer Streamlit
     time_group_avg['Kategori_Waktu'] = time_group_avg['Kategori_Waktu'].astype('str')
     time_group_avg['Rata_rata_Sewa'] = time_group_avg['Rata_rata_Sewa'].astype('float64')
     
     st.subheader("Tabel Hasil Clustering")
     
-    # Membagi layout menjadi 2 kolom untuk tabel
     col1, col2 = st.columns(2)
     with col1:
         st.markdown("**1. Hasil Binning (Tingkat Permintaan)**")
-        st.table(demand_counts)
+        # FIX: gunakan st.dataframe() agar tidak bergantung pada pyarrow
+        st.dataframe(demand_counts, use_container_width=True, hide_index=True)
     with col2:
         st.markdown("**2. Hasil Manual Grouping (Jam Operasional)**")
-        st.table(time_group_avg)
+        # FIX: gunakan st.dataframe() agar tidak bergantung pada pyarrow
+        st.dataframe(time_group_avg, use_container_width=True, hide_index=True)
     
     fig, axes = plt.subplots(1, 2, figsize=(16, 6))
     
