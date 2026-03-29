@@ -86,7 +86,7 @@ elif menu == "RFM Analysis":
     }
     rfm_df = pd.DataFrame(rfm_data)
     
-    st.table(rfm_df)
+    st.table(rfm_df.astype(str))
     
     st.subheader("Visualisasi Metrik RFM")
     fig, axes = plt.subplots(1, 3, figsize=(18, 6))
@@ -138,10 +138,10 @@ elif menu == "Clustering Analysis":
     col1, col2 = st.columns(2)
     with col1:
         st.markdown("**1. Hasil Binning (Tingkat Permintaan)**")
-        st.table(demand_counts)
+        st.table(demand_counts.astype(str))
     with col2:
         st.markdown("**2. Hasil Manual Grouping (Jam Operasional)**")
-        st.table(time_group_avg)
+        st.table(time_group_avg.astype(str))
     
     fig, axes = plt.subplots(1, 2, figsize=(16, 6))
     
