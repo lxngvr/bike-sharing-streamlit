@@ -140,7 +140,7 @@ elif menu == "Clustering Analysis":
         st.dataframe(demand_counts)
     with col2:
         st.markdown("**2. Hasil Manual Grouping (Jam Operasional)**")
-       st.dataframe(time_group_avg)
+        st.dataframe(time_group_avg)
     
     fig, axes = plt.subplots(1, 2, figsize=(16, 6))
     
