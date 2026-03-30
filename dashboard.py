@@ -97,7 +97,7 @@ if menu == "Data Eksplorasi":
     st.pyplot(fig)
 
     # PERTANYAAN 2: Registered vs Casual 
-    st.subheader("2. Perbandingan Jumlah Pengguna Casual vs Registered")
+    st.subheader("Perbandingan Jumlah Pengguna Casual vs Registered")
     fig, ax = plt.subplots(figsize=(10, 7))
     
     # Casual vs Registered 
@@ -128,7 +128,7 @@ if menu == "Data Eksplorasi":
         
         sns.barplot(x='season', y='cnt', data=season_grouped, palette=colors_season, ax=ax)
         ax.set_title("Total Penyewaan Berdasarkan Musim")
-        ax.set_xlabel("Musim (1:Spring, 2:Summer, 3:Fall, 4:Winter)")
+        ax.set_xlabel("Musim (1:Musim Semi, 2:Musim Panas, 3:Musim Gugur, 4:Musim Dingin)")
         ax.set_ylabel("Total Sewa")
         st.pyplot(fig)
         
