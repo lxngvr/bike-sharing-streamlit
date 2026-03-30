@@ -55,7 +55,7 @@ st.sidebar.markdown("---")
 
 # Navigasi Halaman
 if 'halaman' not in st.session_state:
-    st.session_state['halaman'] = "Overview"
+    st.session_state['halaman'] = "Data Eksplorasi"
 
 if st.sidebar.button("Data Eksplorasi", use_container_width=True):
     st.session_state['halaman'] = "Data Eksplorasi"
